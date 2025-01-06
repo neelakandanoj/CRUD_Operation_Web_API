@@ -1,24 +1,34 @@
 ﻿using CRUD_Operation.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using System.Data;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using System.Text.Json;
 
 namespace CRUD_Operation.Controllers
 {
     [Route("api/[controller]/")]
     [ApiController]
+    [Authorize]
     public class ProductsController : ControllerBase
     {
         private readonly string connectionString;
 
+        
+
         public ProductsController(IConfiguration configuration)
         {
             connectionString = configuration["ConnectionStrings:SQLServerDB"] ?? "";
+            
         }
-
+        
+        [Authorize]
         [HttpPost("CreateProduct")]
         public IActionResult CreateProduct(ProductDto product) 
         {
