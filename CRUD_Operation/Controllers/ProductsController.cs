@@ -24,10 +24,11 @@ namespace CRUD_Operation.Controllers
 
         public ProductsController(IConfiguration configuration)
         {
-            connectionString = configuration["ConnectionStrings:SQLServerDB"] ?? "";
-            
+            connectionString = configuration["ConnectionStrings:SQLServerDB"];
+            //connectionString = configuration["ConnectionStrings:SQLServerDB"] ?? "";
+
         }
-        
+
         [Authorize]
         [HttpPost("CreateProduct")]
         public IActionResult CreateProduct(ProductDto product) 
@@ -44,7 +45,7 @@ namespace CRUD_Operation.Controllers
                     {
                         cmd.Parameters.AddWithValue("@name", product.Name);
                         cmd.Parameters.AddWithValue("@brand", product.Brand);
-                        cmd.Parameters.AddWithValue("@category", product.Category); 
+                        cmd.Parameters.AddWithValue("@category", product.Category);  
                         cmd.Parameters.AddWithValue("@price", product.Price);
                         cmd.Parameters.AddWithValue("@description", product.Description);
 

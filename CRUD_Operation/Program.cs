@@ -13,6 +13,10 @@ namespace CRUD_Operation
 
             // Add services to the container.
 
+            //builder.Services.AddControllers(options =>
+            //{
+            //    options.OutputFormatters.RemoveType<Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter>();
+            //}).AddXmlSerializerFormatters();
             builder.Services.AddControllers();
 
 
