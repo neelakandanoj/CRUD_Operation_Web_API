@@ -17,6 +17,16 @@ namespace CRUD_Operation
             //{
             //    options.OutputFormatters.RemoveType<Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter>();
             //}).AddXmlSerializerFormatters();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp",
+                    policy => policy
+                        .WithOrigins("http://localhost:4200") // ?? Angular app URL
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials());
+            });
             builder.Services.AddControllers();
 
 
@@ -58,7 +68,7 @@ namespace CRUD_Operation
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseCors("AllowAngularApp");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
