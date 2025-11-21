@@ -18,7 +18,9 @@ namespace CRUD_Operation
                 options.AddPolicy("AllowAngularApp", policy =>
                     policy.WithOrigins(
                             "http://localhost:4200",
-                            "https://neelakandan-app-hcgmcxdch2ftcah2.centralindia-01.azurewebsites.net"
+                            "https://neelakandan-app-hcgmcxdch2ftcah2.centralindia-01.azurewebsites.net",
+                            "https://neelakandan-amazon-fpcwcndfcyc8a7fz.southindia-01.azurewebsites.net"
+
                         )
                         .AllowAnyHeader()
                         .AllowAnyMethod()
