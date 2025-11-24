@@ -186,7 +186,7 @@ namespace CRUD_Operation.Controllers
                         conn.Close();
                     }
                 }
-                return Ok();
+                return Ok(new { Success = true, message = "Product Updated Successfully." });
             }
             catch (Exception e)
             {
@@ -218,7 +218,7 @@ namespace CRUD_Operation.Controllers
                         conn.Close();
                     }
                 }
-                return Ok();
+                return Ok(new { Success = true, message = "Product Deleted Successfully." });
             }
             catch (Exception e)
             {
